@@ -30,14 +30,32 @@ function draw() {
   textSize(15);
   if(mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < height){
     fill(0, 0, 0);
-    text((r1)+" , "+(g1) +" , "+(b1),mouseX, mouseY);
+    text("RGB: "+(r1)+", "+(g1) +", "+(b1),mouseX, mouseY);
   }
   if(mouseX > 200 && mouseX < 400 && mouseY > 0 && mouseY < height){
     fill(0, 0, 0);
-    text((r2)+" , "+(g2) +" , "+(b2),mouseX, mouseY);
+    text("RGB: "+(r2)+", "+(g2) +", "+(b2),mouseX, mouseY);
   }
   if(mouseX > 400 && mouseX < 600 && mouseY > 0 && mouseY < height){
     fill(0, 0, 0);
-    text((r3)+" , "+(g3) +" , "+(b3), mouseX, mouseY);
+    text("RGB: "+(r3)+", "+(g3) +", "+(b3), mouseX, mouseY);
+  }
+}
+
+function mouseClicked() {
+  if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < height) {
+    r1 = floor(random(0, 255));
+    g1 = floor(random(0, 255));
+    b1 = floor(random(0, 255));
+  }
+  if(mouseX > 200 && mouseX < 400 && mouseY > 0 && mouseY < height){
+    r2 = floor(random(0, 255));
+    g2 = floor(random(0, 255));
+    b2 = floor(random(0, 255));
+  }
+  if(mouseX > 400 && mouseX < 600 && mouseY > 0 && mouseY < height){
+    r3 = floor(random(0, 255));
+    g3 = floor(random(0, 255));
+    b3 = floor(random(0, 255));
   }
 }
