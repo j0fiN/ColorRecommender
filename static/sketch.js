@@ -16,5 +16,11 @@ function setup() {
 
 function draw() {
   background(255, 255, 255);
-  rect(0,width)
+  noStroke();
+  fill(r1, g1, b1);
+  rect(0, 0, 300, 700);
+  fill(r2, g2, b2);
+  rect(300,0,300,700);
+  fill(r3, g3, b3);
+  rect(600,0,300,700);
 }
