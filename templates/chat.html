@@ -13,9 +13,10 @@
         var x = document.getElementById("formchat").elements.namedItem("message").value;
         var node1 = document.createElement("LI");
         node1.classList.add("list-group-item");
-        var textnode = document.createTextNode('{{chatter_name}}'+x);
+        var textnode = document.createTextNode('{{chatter_name}}'+' : '+x);
         node1.appendChild(textnode);
         document.getElementById("Messagearena").appendChild(node1);
+        document.getElementById('message').value = ''
     }
 </script>
 <div class="alert alert-info" role="alert">
