@@ -23,14 +23,12 @@ def home():
 @app.route(f'/show', methods=["GET", "POST"])
 def chatArena():
     if request.method == "GET":
-        return render_template("main.html", chatter_name=peer_name[0])
+        return render_template("main.html", name=peer_name[0])
     else:
         request.form.get('message')
-        return render_template("main.html", chatter_name=peer_name[0])
+        return render_template("main.html", name=peer_name[0])
 
 
-def register_node():
-    pass
 
 
 
