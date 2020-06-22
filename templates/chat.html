@@ -4,20 +4,37 @@
     <meta charset="UTF-8">
     <title>ChatWebApp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
 </head>
 <body>
+<script type="text/javascript">
+    function func(variables){return variables;}
+    var Var = func({{chatter_name|tojson}});
+    function f() {
+        var x = document.getElementById("formchat").elements.namedItem("message").value;
+        var node1 = document.createElement("LI");
+        node1.classList.add("list-group-item");
+        var textnode = document.createTextNode(Var["name"]+" : "+x);
+        node1.appendChild(textnode);
+        document.getElementById("Messagearena").appendChild(node1);
+        console.log(x);
+    }
+</script>
 <div class="alert alert-info" role="alert">
-  A simple Web Chatter
+  Chat in this Arena
 </div>
-
-<form method="POST">
+<form method="POST" id="formchat">
 <div class="input-group mb-3" style="width: 500px">
   <input formmethod="POST" name="messsage" type="text" id="message" class="form-control" placeholder="Type your message here"  aria-describedby="button-addon2">
   <div class="input-group-append">
-    <button id="sender" class="btn btn-outline-info" type="submit" id="button-addon2">send</button>
+    <button id="sender" class="btn btn-outline-info" type="submit" id="button-addon2" onclick="f(); return false;">send</button>
   </div>
 </div>
 </form>
+
+<ul class="list-group" id="Messagearena">
+</ul>
 
 
 
