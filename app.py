@@ -1,8 +1,10 @@
 from flask import *
-import os, dotenv
-"""https://localhost:5000"""
+import os
+import dotenv
 
+dotenv.load_dotenv()
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.getenv("API_SECRET_KEY")
 peer_name = set()
 
 
@@ -14,11 +16,13 @@ def home():
         return render_template("index.html")
     else:
         peer_name.add(request.form.get("name"))
-        return redirect(url_for("show"))
+        return redirect(url_for("chatArena"))
 
 @app.route('/show')
-def show():
-    return " , ".join(list(peer_name))
+def chatArena():
+    return render_template("chat.html")
+
+
 
 
 if __name__ == "__main__":
