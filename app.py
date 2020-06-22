@@ -21,9 +21,9 @@ def home():
 @app.route('/show', methods=["GET", "POST"])
 def chatArena():
     if request.method=="GET":
-        return render_template("chat.html")
+        return render_template("chat.html", chatter_name="")
     else:
-        return render_template("chat.html" , chatter_name = dict(name=peer_name))
+        return render_template("chat.html" , chatter_name=peer_name)
 
 
 
