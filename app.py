@@ -20,7 +20,7 @@ def home():
         peer_list.append(request.form.get("name"))
         return redirect(url_for("chatArena"))
 
-@app.route(f'/show', methods=["GET", "POST"])
+@app.route('/show', methods=["GET", "POST"])
 def chatArena():
     if request.method == "GET":
         return render_template("main.html", name=peer_name[0])
@@ -28,6 +28,12 @@ def chatArena():
         request.form.get('message')
         return render_template("main.html", name=peer_name[0])
 
+
+@app.route('/api', methods=["POST"])
+def recv():
+    res = request.get_json()
+    print(res)
+    return "Success"
 
 
 
