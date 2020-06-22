@@ -18,7 +18,7 @@ def home():
 
 @app.route('/show')
 def show():
-    return peer_name
+    return " , ".join(list(peer_name))
 
 
 if __name__ == "__main__":
