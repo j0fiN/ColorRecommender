@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>ChatWebApp</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">4
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="alert alert-info" role="alert">
   A simple Web Chatter
 </div>
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener(function(){
+        var socket = io('https://localhost:5000/test');
+        socket.on('connect', function() {
+        socket.emit('my event', {data: 'User is  connected!'});
+        });
+    })
+</script>
+<ul class="list-group" id="ChatArea">
+<!--  <li class="list-group-item">ohyeah</li>-->
+</ul>
+<input id="Message" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 
 
 

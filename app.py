@@ -12,20 +12,9 @@ socketio = SocketIO(app)
 def hello():
     return render_template("index.html")
 
-
 @socketio.on('message', namespace="/test")
-def testing(message):
-    emit("my response", dict(data=message["data"]))
-
-@socketio.on('my broadcast', namespace="/test")
-def my_broadcast_message(message):
-    emit("my response", dict(data=message["data"]), broadcast=True)
-
-@socketio.on("connect", namespace="/test")
-def test_connector():
-    emit("my response",  dict(data="Connected"))
-
-
+def handle(message):
+    send(message,broadcast=True)
 
 if __name__ == "__main__":
     socketio.run(app)
