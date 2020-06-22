@@ -4,7 +4,6 @@ var r3; var g3; var b3;
 var w1 = 200; var h1 = 400;
 var w2 = 200; var h2 = 400;
 var w3 = 200; var h3 = 400;
-var values ={};
 function setup() {
   createCanvas(600, 400);
   r1 = floor(random(0,255));
@@ -44,24 +43,36 @@ function draw() {
 }
 
 function mouseClicked() {
+  let values;
   if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < height) {
-    values.r = r1; values.g = b1; values.b = b1;
+    values = {r:r1, g:g1, b:b1};
     r1 = floor(random(0, 255));
     g1 = floor(random(0, 255));
     b1 = floor(random(0, 255));
   }
   if(mouseX > 200 && mouseX < 400 && mouseY > 0 && mouseY < height){
-    values.r = r1; values.g = b1; values.b = b1;
+    values = {r:r2, g:g2, b:b2};
     r2 = floor(random(0, 255));
     g2 = floor(random(0, 255));
     b2 = floor(random(0, 255));
   }
-  if(mouseX > 400 && mouseX < 600 && mouseY > 0 && mouseY < height){
-    values.r = r1; values.g = b1; values.b = b1;
+  if(mouseX > 400 && mouseX < 600 && mouseY > 0 && mouseY < height) {
+    values = {r: r3, g: g3, b: b3};
     r3 = floor(random(0, 255));
     g3 = floor(random(0, 255));
     b3 = floor(random(0, 255));
   }
-  JSON.stringify(values);
-  httpPost("http://127.0.0.1:5000/38d633dd9915c001",'json', JSON.stringify(values));
+  // console.log(typeof values);
+  // console.log(JSON.stringify(values));
+  fetch('http://127.0.0.1:5000/api',{
+    method: 'POST',
+    body: JSON.stringify(values),
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    });
 }

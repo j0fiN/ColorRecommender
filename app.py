@@ -31,9 +31,9 @@ def chatArena():
 
 @app.route('/api', methods=["POST"])
 def recv():
-    res = request.get_json()
-    print(res)
-    return "Success"
+    res = request.get_data()
+    print(eval(res))
+    return jsonify(eval(res))
 
 
 
