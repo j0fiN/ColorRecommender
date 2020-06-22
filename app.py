@@ -1,7 +1,7 @@
 from flask import *
 from flask_socketio import *
 import os, dotenv
-"""localhost:5000"""
+"""https://localhost:5000"""
 
 dotenv.load_dotenv()
 app = Flask(__name__, static_folder="static", template_folder="templates")
@@ -10,20 +10,20 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def hello():
-    return "hello"
+    return render_template("index.html")
 
-@socketio.on('Event', namespace="/test")
-def recv_msg(message):
-    print("recved msg : ", message)
-    return 2
 
-def confirm():
-    print("message recved")
+@socketio.on('message', namespace="/test")
+def testing(message):
+    emit("my response", dict(data=message["data"]))
 
-@socketio.on('Event')
-def reply(message):
-    emit("my res", message, namespace="/chat", callback=confirm)
+@socketio.on('my broadcast', namespace="/test")
+def my_broadcast_message(message):
+    emit("my response", dict(data=message["data"]), broadcast=True)
 
+@socketio.on("connect", namespace="/test")
+def test_connector():
+    emit("my response",  dict(data="Connected"))
 
 
 
