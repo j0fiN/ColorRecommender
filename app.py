@@ -1,25 +1,28 @@
 from flask import *
-from flask_socketio import *
 import os, dotenv
 """https://localhost:5000"""
 
-dotenv.load_dotenv()
-app = Flask(__name__, static_folder="static", template_folder="templates")
-app.config["SECRET_KEY"] = os.getenv("APP_SECRET_KEY")
-socketio = SocketIO(app)
+app = Flask(__name__)
+peer_name = set()
 
-# @app.route('/')
-# def hello():
-#     return render_template("index.html")
 
-@socketio.on('message')
-def handle(msg):
-    print("hello")
-    send(msg, broadcast=True)
+
+@app.route('/', methods=["GET", "POST"])
+@app.route('/home')
+def home():
+    if request.method == "GET":
+        return render_template("index.html")
+    else:
+        peer_name.add(request.form.get("name"))
+        return redirect(url_for("show"))
+
+@app.route('/show')
+def show():
+    return peer_name
+
 
 if __name__ == "__main__":
-    socketio.run(app)
-
+    app.run()
 
 
 
