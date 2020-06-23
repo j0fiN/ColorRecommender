@@ -40,10 +40,9 @@ def recv():
     return jsonify(eval(res))
 
 
-
-
-
-
+@app.route("/send",methods=["GET"])
+def sender():
+    pass
 
 
 if __name__ == "__main__":
