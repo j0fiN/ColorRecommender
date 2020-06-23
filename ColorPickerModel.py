@@ -23,7 +23,8 @@ test_data = {'1': {'b': 92, 'g': 164, 'r': 238, 'rate': 1},
              '17': {'b': 125, 'g': 160, 'r': 218, 'rate': 3},
              '18': {'b': 80, 'g': 150, 'r': 46, 'rate': 1},
              '19': {'b': 137, 'g': 62, 'r': 77, 'rate': 2},
-             '20': {'b': 214, 'g': 115, 'r': 182, 'rate': 3}}
+             '20': {'b': 214, 'g': 115, 'r': 182, 'rate': 3}
+             }
 
 
 class ML_Model:
@@ -31,6 +32,7 @@ class ML_Model:
     def __init__(self):
         try:
             self.res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
+            print(self.res.content)
             self.data = eval(self.res.content)
         except requests.exceptions.RequestException:  # This is the correct syntax
             self.data = {'1': {'b': 0, 'g': 0, 'r': 0, 'rate': 1}}

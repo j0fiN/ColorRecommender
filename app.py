@@ -54,7 +54,7 @@ def recv_sketch():
 
 @app.route("/b7438d633dd9915c", methods=["GET"])
 def sender_ml():
-    print(df.json)
+    # print(df.json)
     return jsonify(df.json)
 
 
