@@ -29,20 +29,20 @@ test_data = {'1': {'b': 92, 'g': 164, 'r': 238, 'rate': 1},
 class ML_Model:
 
     def __init__(self):
-        res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
-        self.data = eval(res.content)
-        self.r = np.array()
-        self.g = np.array()
-        self.b = np.array()
-        self.targets = np.array()
-        self.inputs = np.array()
+        # res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
+        # self.data = eval(res.content)
+        self.r = None
+        self.g = None
+        self.b = None
+        self.targets = None
+        self.inputs = None
 
-    def preprocess(self):
+    def preprocess(self, data):
         red = list()
         green = list()
         blue = list()
         ratings = list()
-        for color in self.data.keys():
+        for color in list(data.values()):
             red.append(color['r'])
             green.append(color['g'])
             blue.append(color['b'])
@@ -51,13 +51,25 @@ class ML_Model:
         self.g = np.array(green)
         self.b = np.array(blue)
         self.targets = np.array(ratings)
+        self.targets.reshape(-1,1)
         inp = list()
         inp.append(self.r)
         inp.append(self.g)
         inp.append(self.b)
         self.inputs = np.array(inp)
+        self.inputs = self.inputs.reshape(20, 3)
 
     def train(self):
         model = Pipeline([("scaler", MinMaxScaler(feature_range=(0, 1))),
                           ("liner_model", LinearRegression())])
-        pass
+        model.fit(self.inputs, self.targets)
+        return model
+
+    def predictor(self, r_c, g_c, b_c):
+        self.preprocess(test_data)
+        model = self.train()
+        return model.predict([[r_c, g_c, b_c]])
+
+if __name__=="__main__":
+    m =ML_Model()
+    print(m.predictor(235, 245, 266))
