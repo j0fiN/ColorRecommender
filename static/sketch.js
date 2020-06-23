@@ -18,7 +18,7 @@ function setup() {
   b1 = floor(random(0,255));
   b2 = floor(random(0,255));
   b3 = floor(random(0,255));
-  ratings = floor(random(1,3));
+  ratings = floor(random(1,4));
 
 }
 
@@ -26,11 +26,11 @@ function draw() {
     background(255, 255, 255);
     noStroke();
     fill(r1, g1, b1);
-    rect(0, 0, Width/3, Height);
+    rect(0, 200, Width/3, Height);
     fill(r2, g2, b2);
-    rect(Width/3, 0, Width/3, Height);
+    rect(Width/3, 200, Width/3, Height);
     fill(r3, g3, b3);
-    rect(2*Width/3, 0, Width/3, Height);
+    rect(2*Width/3, 200, Width/3, Height);
     textSize(15);
     if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < Height) {
       fill(0, 0, 0);
@@ -57,21 +57,21 @@ function mouseClicked() {
       r1 = floor(random(0, 255));
       g1 = floor(random(0, 255));
       b1 = floor(random(0, 255));
-      ratings = floor(random(1,3));
+      ratings = floor(random(1, 4));
     }
     if (mouseX > 200 && mouseX < 400 && mouseY > 0 && mouseY < Height) {
       values = {r: r2, g: g2, b: b2, rate:ratings};
       r2 = floor(random(0, 255));
       g2 = floor(random(0, 255));
       b2 = floor(random(0, 255));
-      ratings = floor(random(1,3));
+      ratings = floor(random(1, 4));
     }
     if (mouseX > 400 && mouseX < 600 && mouseY > 0 && mouseY < Height) {
       values = {r: r3, g: g3, b: b3, rate:ratings};
       r3 = floor(random(0, 255));
       g3 = floor(random(0, 255));
       b3 = floor(random(0, 255));
-      ratings = floor(random(1,3));
+      ratings = floor(random(1, 4));
     }
     fetch('http://127.0.0.1:5000/api', {
       method: 'POST',
