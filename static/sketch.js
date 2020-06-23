@@ -59,7 +59,7 @@ function mouseClicked() {
       g1 = floor(random(0, 255));
       b1 = floor(random(0, 255));
       ratings = floor(random(1, 4));
-      fetch('http://127.0.0.1:5000/api', {
+      fetch('http://127.0.0.1:5000/3318440929cb74', {
       method: 'POST',
       body: JSON.stringify(values),
     })
@@ -77,7 +77,7 @@ function mouseClicked() {
       g2 = floor(random(0, 255));
       b2 = floor(random(0, 255));
       ratings = floor(random(1, 4));
-      fetch('http://127.0.0.1:5000/api', {
+      fetch('http://127.0.0.1:5000/3318440929cb74', {
       method: 'POST',
       body: JSON.stringify(values),
     })

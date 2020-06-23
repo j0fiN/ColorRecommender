@@ -40,7 +40,7 @@ def recv():
     return jsonify(eval(res))
 
 
-@app.route("/send", methods=["GET"])
+@app.route("/b7438d633dd9915c", methods=["GET"])
 def sender():
     return jsonify(df.json)
 
