@@ -46,7 +46,7 @@ class ML_Model:
             red.append(color['r'])
             green.append(color['g'])
             blue.append(color['b'])
-            ratings.append(color['rate'])
+            ratings.append([color['rate']])
         self.r = np.array(red)
         self.g = np.array(green)
         self.b = np.array(blue)
@@ -55,8 +55,8 @@ class ML_Model:
         inp.append(self.r)
         inp.append(self.g)
         inp.append(self.b)
+
         self.inputs = np.array(inp)
-        self.targets = self.targets.reshape(1, -1)
         self.inputs = self.inputs.reshape(self.inputs.shape[1], 3)
 
     def train(self):
