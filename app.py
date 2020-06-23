@@ -45,7 +45,7 @@ def recv_sketch():
         r = rd.randint(1,255)
         g = rd.randint(1, 255)
         b = rd.randint(1, 255)
-        if model.predictor(r, g, b)[0][0] > 3:
+        if model.predictor(r, g, b)[0][0] > 2:
             data = dict(r=r, g=g, b=b, rate=model.predictor(r, g, b)[0][0])
             result.append(data)
             break
@@ -58,11 +58,6 @@ def sender_ml():
     return jsonify(df.json)
 
 
-@app.route("/test", methods=["GET"])
-def send_back():
-    resa = result[0]
-    result.clear()
-    return jsonify(resa)
 
 
 

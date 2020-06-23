@@ -32,8 +32,7 @@ class ML_Model:
     def __init__(self):
         try:
             self.res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
-            if self.res.status_code!=500:
-                self.data = eval(self.res.content)
+            self.data = eval(self.res.content)
         except requests.exceptions.RequestException:  # This is the correct syntax
             self.data = {'1': {'b': 0, 'g': 0, 'r': 0, 'rate': 1}}
 
