@@ -51,7 +51,6 @@ class ML_Model:
         self.g = np.array(green)
         self.b = np.array(blue)
         self.targets = np.array(ratings)
-        self.targets.reshape(-1,1)
         inp = list()
         inp.append(self.r)
         inp.append(self.g)
@@ -72,4 +71,3 @@ class ML_Model:
 
 if __name__=="__main__":
     m =ML_Model()
-    print(m.predictor(235, 245, 266))
