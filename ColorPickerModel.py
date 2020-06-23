@@ -29,20 +29,20 @@ test_data = {'1': {'b': 92, 'g': 164, 'r': 238, 'rate': 1},
 class ML_Model:
 
     def __init__(self):
-        # res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
-        # self.data = eval(res.content)
+        self.res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
+        self.data = eval(self.res.content)
         self.r = None
         self.g = None
         self.b = None
         self.targets = None
         self.inputs = None
 
-    def preprocess(self, data):
+    def preprocess(self):
         red = list()
         green = list()
         blue = list()
         ratings = list()
-        for color in list(data.values()):
+        for color in list(self.data.values()):
             red.append(color['r'])
             green.append(color['g'])
             blue.append(color['b'])
@@ -56,7 +56,8 @@ class ML_Model:
         inp.append(self.g)
         inp.append(self.b)
         self.inputs = np.array(inp)
-        self.inputs = self.inputs.reshape(20, 3)
+        self.targets = self.targets.reshape(1, -1)
+        self.inputs = self.inputs.reshape(self.inputs.shape[1], 3)
 
     def train(self):
         model = Pipeline([("scaler", MinMaxScaler(feature_range=(0, 1))),
@@ -65,9 +66,7 @@ class ML_Model:
         return model
 
     def predictor(self, r_c, g_c, b_c):
-        self.preprocess(test_data)
+        self.preprocess()
         model = self.train()
         return model.predict([[r_c, g_c, b_c]])
 
-if __name__=="__main__":
-    m =ML_Model()
