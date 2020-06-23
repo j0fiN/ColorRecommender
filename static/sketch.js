@@ -95,7 +95,7 @@ function mouseClicked() {
       g3 = floor(random(0, 255));
       b3 = floor(random(0, 255));
       ratings = floor(random(1, 4));
-      fetch('http://127.0.0.1:5000/api', {
+      fetch('http://127.0.0.1:5000/3318440929cb74', {
       method: 'POST',
       body: JSON.stringify(values),
     })

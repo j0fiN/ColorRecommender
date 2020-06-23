@@ -33,16 +33,16 @@ def chatArena():
         return render_template("main.html", name=peer_name[0])
 
 
-@app.route('/api', methods=["POST"])
+@app.route('/3318440929cb74', methods=["POST"])
 def recv():
     res = request.get_data()
     df.update(eval(res))
     return jsonify(eval(res))
 
 
-@app.route("/send",methods=["GET"])
+@app.route("/send", methods=["GET"])
 def sender():
-    pass
+    return jsonify(df.json)
 
 
 if __name__ == "__main__":
