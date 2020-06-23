@@ -9,6 +9,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_2(self):
         res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
+        print(eval(res.content))
         self.assertEqual("<class 'dict'>", str(type(eval(res.content))))
 
 if __name__ == '__main__':
