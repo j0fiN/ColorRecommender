@@ -8,7 +8,7 @@ var Width = 600; var Height = 400;
 var ratings;
 function setup() {
   let cnv = createCanvas(Width, 600);
-  cnv.position(50, 100);
+  cnv.position(50, 130);
   r1 = floor(random(0,255));
   r2 = floor(random(0,255));
   r3 = floor(random(0,255));
