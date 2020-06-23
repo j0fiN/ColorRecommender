@@ -18,6 +18,7 @@ class TestCase(unittest.TestCase):
 
     def test_4(self):
         m = ML_Model()
+        m.preprocess()
         self.assertIsNotNone(m.train())
 
 
