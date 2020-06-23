@@ -1,12 +1,17 @@
 from flask import *
 import os
 import dotenv
+from DataHandling import Data
+
+
 
 dotenv.load_dotenv()
+df = Data()
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("API_SECRET_KEY")
 peer_name = list()
-peer_list = list()
+
+
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -16,7 +21,6 @@ def home():
         return render_template("index.html")
     else:
         peer_name.append(request.form.get("name"))
-        peer_list.append(request.form.get("name"))
         return redirect(url_for("chatArena"))
 
 
@@ -32,8 +36,14 @@ def chatArena():
 @app.route('/api', methods=["POST"])
 def recv():
     res = request.get_data()
-    # print(eval(res))
+    df.update(eval(res))
     return jsonify(eval(res))
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
