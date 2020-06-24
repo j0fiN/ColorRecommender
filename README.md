@@ -28,7 +28,10 @@ purpose and it has nothing to do with data collection.
 
 ### How to run
 ```commandline
-git clone https://github.com/j0fiN/ChatWebApp.git
+git clone https://github.com/j0fiN/ColorRecommender.git
+cd ColorRecommender
+pip install -r requirements.txt
+python app.py
 ```
 
 
