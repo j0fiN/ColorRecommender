@@ -18,6 +18,7 @@ peer_name = list()
 
 
 
+
 @app.route('/', methods=["GET", "POST"])
 @app.route('/home')
 def home():
@@ -41,14 +42,6 @@ def chatArena():
 def recv_sketch():
     res = request.get_data()
     df.update(eval(res))
-    while True:
-        r = rd.randint(1,255)
-        g = rd.randint(1, 255)
-        b = rd.randint(1, 255)
-        if model.predictor(r, g, b)[0][0] > 2:
-            data = dict(r=r, g=g, b=b, rate=model.predictor(r, g, b)[0][0])
-            result.append(data)
-            break
     return jsonify(eval(res))
 
 
@@ -57,6 +50,14 @@ def sender_ml():
     # print(df.json)
     return jsonify(df.json)
 
+@app.route("/generate", methods=["GET"])
+def generate_result():
+    while True:
+        r = rd.randint(1, 255)
+        g = rd.randint(1, 255)
+        b = rd.randint(1, 255)
+        if model.predictor(r, g, b)[0][0] > 2:
+            return render_template("main.html", name=peer_name[0],r=r, g=g, b=b)
 
 
 
