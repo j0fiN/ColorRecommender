@@ -35,7 +35,11 @@ cd ColorRecommender
 pip install -r requirements.txt
 python app.py
 ```
-
+### References
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- [P5*.js](https://p5js.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Scikit-learn](https://scikit-learn.org/stable/)
 
 
 
