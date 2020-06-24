@@ -1,6 +1,5 @@
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 import requests
@@ -36,7 +35,7 @@ class ML_Model:
             self.data = eval(self.res.content)
         except requests.exceptions.RequestException:
             self.data = {'1': {'b': 0, 'g': 0, 'r': 0, 'rate': 1}}
-
+            # self.data = test_data
 
 
         self.r = None
@@ -69,7 +68,7 @@ class ML_Model:
 
     def train(self):
         model = Pipeline([("scaler", MinMaxScaler(feature_range=(0, 1))),
-                          ("liner_model", SVC())])
+                          ("liner_model", KNeighborsClassifier(n_neighbors=3))])
         model.fit(self.inputs, self.targets)
         return model
 
