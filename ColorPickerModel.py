@@ -35,8 +35,7 @@ class ML_Model:
             self.res = requests.get(url="http://127.0.0.1:5000/b7438d633dd9915c")
             self.data = eval(self.res.content)
         except requests.exceptions.RequestException:
-            self.data = test_data
-            # self.data = {'1': {'b': 0, 'g': 0, 'r': 0, 'rate': 1}}
+            self.data = {'1': {'b': 0, 'g': 0, 'r': 0, 'rate': 1}}
 
 
         self.r = None
@@ -69,7 +68,7 @@ class ML_Model:
 
     def train(self):
         model = Pipeline([("scaler", MinMaxScaler(feature_range=(0, 1))),
-                          ("liner_model", KNeighborsClassifier())])
+                          ("liner_model", KNeighborsClassifier(n_neighbors=3))])
         model.fit(self.inputs, self.targets)
         return model
 
