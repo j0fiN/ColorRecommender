@@ -9,6 +9,8 @@ is from 1 to 3 where,
 - 2 depicts okay
 - 3 depicts good
 
+And the user gets their favorite color in few generation cyles.
+(minimum of 10 generation required)
 ### Use cases
 This project is mainly developed to show **Dynamic Model Training** 
 and **Deployment of ML Models To Production**.
@@ -21,7 +23,7 @@ as you click the *Generate* button in the website.
 #### Disclaimer
 - The Website was developed giving more importance to 
 server-side development.So the website is **NOT reponsive**. For best results,
-use computer. And get your name in the first page was for personal education
+use computer. And getting your name in the first page was for personal education
 purpose and it has nothing to do with data collection.
 
 - This is just a simple model and strictly not for production purpose.
@@ -33,5 +35,7 @@ cd ColorRecommender
 pip install -r requirements.txt
 python app.py
 ```
+
+
 
 
