@@ -56,8 +56,8 @@ def generate_result():
         r = rd.randint(1, 255)
         g = rd.randint(1, 255)
         b = rd.randint(1, 255)
-        if model.predictor(r, g, b)[0][0] > 2:
-            return render_template("main.html", name=peer_name[0],r=r, g=g, b=b)
+        if model.predictor(r, g, b)[0] == 3:
+            return render_template("main.html", name=peer_name[0], r=r, g=g, b=b)
 
 
 
