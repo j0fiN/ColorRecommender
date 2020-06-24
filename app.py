@@ -10,7 +10,6 @@ import requests
 dotenv.load_dotenv()
 df = Data()
 result = list()
-model = ML_Model()
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("API_SECRET_KEY")
 peer_name = list()
@@ -52,6 +51,7 @@ def sender_ml():
 
 @app.route("/generate", methods=["GET"])
 def generate_result():
+    model = ML_Model()
     while True:
         r = rd.randint(1, 255)
         g = rd.randint(1, 255)

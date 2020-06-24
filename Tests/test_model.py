@@ -10,6 +10,7 @@ class TestCase(unittest.TestCase):
 
     def test_2(self):
         m = ML_Model()
+        print(m.data)
         self.assertEqual(len(m.predictor(0, 0, 0)), 1)
 
     def test_3(self):
