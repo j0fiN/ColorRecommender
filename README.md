@@ -9,7 +9,7 @@ is from 1 to 3 where,
 - 2 depicts okay
 - 3 depicts good
 
-And the user gets their favorite color in few generation cyles.
+And the user gets their favorite color in few generation cylces.
 (minimum of 10 generation required)
 ### Use cases
 This project is mainly developed to show **Dynamic Model Training** 
