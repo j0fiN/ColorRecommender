@@ -13,18 +13,16 @@
 </head>
 <body>
 <div class="alert alert-info" role="alert">
-    <h3>Welcome to the Color Recommender, {{name}}.
+    <h4>Welcome to the Color Recommender, {{name}}. Choose the color based on the rating below
         <form action="http://127.0.0.1:5000/generate">
-            <button id="generate"  class="btn btn-outline-info" type="submit" id="button-addon2"style="top: 50px;left: 800px">Generate</button>
+            <button id="generate"  class="btn btn-outline-info" type="submit" id="button-addon2">Generate</button>
         </form>
-
-    </h3>
-    <button style="background-color: rgb({{r}}, {{g}}, {{b}}); top: 500px;left: 800px">Result</button>
-    <p>Choose the color based on the rating below</p>
+    </h4>
 </div>
 <canvas style="position:absolute;left: 100px;top: 100px;border-style: none">
     <script  src="../static/sketch.js"></script>
 </canvas>
+<canvas width="400" height="400" style="background-color: rgb({{r}}, {{g}}, {{b}});position:absolute; top: 200px;left: 800px"></canvas>
 
 
 
